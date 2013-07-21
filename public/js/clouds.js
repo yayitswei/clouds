@@ -2,8 +2,10 @@ var currentIndex = 0;
 var clouds =
 [
 {"name": "calistoga",
+  "genus": "genus1",
   "specie": "specie1"},
 {"name": "kauai",
+  "genus": "genus2",
   "specie": "specie2"},
   ];
 
