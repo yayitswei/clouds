@@ -1,0 +1,141 @@
+body {
+  background-color: transparent !important;
+}
+
+#cloudbg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #000000;
+  background: no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.sidebar {
+  /* Collapsed */
+  position: fixed;
+  width: 0; 
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  height: 100%;
+  background-color: #0a0d0f;
+  transition: width 0.3s ease;
+
+  .close-sidebar {
+    float: right;
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+  }
+
+  .nav-title {
+    padding: 15px;
+    float: left;
+  }
+}
+
+.nav-title {
+  color: white;
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+
+img.navcloud {
+  width: 100%;
+}
+
+.page-wrap {
+  width: 100%;
+  float: right;
+  transition: width 0.3s ease;
+}
+
+#sidebar:target {
+  width: 20%; 
+}
+
+#sidebar:target + .page-wrap {
+  width: 80%;
+}
+
+
+#previous {
+  padding-top:300px;
+  float:left;
+  font-size: 70px;
+}
+
+#next {
+  padding-top:300px;
+  float:right;
+  font-size: 70px;
+}
+
+
+p {
+  font-family: 'Avenir', sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  color: #FFF;
+}
+
+
+
+h1 {
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+  font-size: 100px;
+  line-height: 80px;
+  color: #FFF;
+  letter-spacing: -2px;
+}
+
+h4 {
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+
+
+.description {
+  font-family: 'Karla', sans-serif;
+  font-weight: regular;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFF;
+}
+
+a {
+  color: #FFFFFF !important;
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: transparent !important;
+}
+
+ul {
+  list-style-type: none;
+  padding:0;
+}
+
+li {
+  cursor: pointer;
+  padding-bottom: 5px;
+}

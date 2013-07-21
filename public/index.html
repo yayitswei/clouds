@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Clouds</title>
+    <link rel="stylesheet/less" type="text/css" href="/css/styles.less" />
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/less-1.4.1.min.js"></script>
+    <script src="/js/clouds.js"></script>
+  </head>
+  <body>
+
+    <!-- I am collapsed by default -->
+    <nav id="sidebar" class="sidebar">
+    <a href="#" class="close-sidebar">&#10005;</a>
+    <span class="nav-title">All Clouds</span>
+    <ul id="cloudthumbs"></ul>
+
+    <!-- more -->
+    </nav>
+
+    <!-- I am full width by default -->
+    <div class="page-wrap">
+      <div class="main-navigation" style="padding-top:5px;">
+        <a href="#sidebar" class="nav-title">&#9776;</a>
+      </div>
+
+      <a id="previous" onclick="goPrevious()">&#8612;</a>
+      <a id="next" onclick="goNext()">&#8614;</a>
+      <h1 id="cloudname" style="text-align:center; padding-top:50px;"></h1>
+      <div id="cloudbg"></div>
+    </div>
+  </body>
+</html>
