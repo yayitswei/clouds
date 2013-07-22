@@ -38,6 +38,10 @@ $(document).ready(function() {
     $('#cloudthumbs').append("<li data-index=" + i + "><img class='navcloud' src='/images/"+ clouds[i].name + "-thumb.png'></li>");
   }
   $("#cloudthumbs li").click(goToCloud);
+
+  // wire up answer listeners
+  $('body').on('change', 'input[name=genus-group]', null, checkGenusAnswer);
+  $('body').on('change', 'input[name=species-group]', null, checkSpeciesAnswer);
 });
 
 function loadCloud(index) {
@@ -49,6 +53,8 @@ function loadCloud(index) {
     $('#clouddescription').html(clouds[index].description);
     $('#cloudprecipitation').html(clouds[index].precipitation);
     $('#cloudlevel').html(clouds[index].level);
+    addMultipleChoice($('#genus-choices'), 'genus');
+    addMultipleChoice($('#species-choices'), 'species');
   });
 
 }
@@ -75,4 +81,40 @@ function goToCloud() {
   menuItem = $(this);
   index = menuItem.data("index");
   loadCloud(index);
+}
+
+function getChoices(allAnswers, correctAnswer) {
+                                // see: http://underscorejs.org/#chain
+  return _.chain(allAnswers)    // this lets you chain together multiple fns
+    .reject(_.isEmpty)          // remove the empty choices (e.g. not every cloud has a specie)
+    .shuffle()                  // shuffle the values
+    .value();                   // works with chain to return the result
+}
+
+// adds choices (radio boxes) to $element for a given field ('genus', 'species', or 'optical')
+function addMultipleChoice($element, field) {
+  // we know the correct answer from our current cloud, clouds[currentIndex]
+  choices = getChoices(_.pluck(clouds, field), clouds[currentIndex][field]);
+
+  // clear the element
+  $element.html($element, "");
+
+  // loop through choices and add the radio buttons (change this to restyle)
+  for (i in choices) {
+    $element.append("<div><input type='radio' name='"
+        + field + "-group' value='" + choices[i] + "'> "
+        + choices[i] + "</div>");
+  }
+}
+
+function checkGenusAnswer() {
+  userAnswer = $(this).val();
+  correctAnswer = clouds[currentIndex].genus;
+  console.log("You clicked " + userAnswer + ". The correct answer is " + correctAnswer);
+}
+
+function checkSpeciesAnswer() {
+  userAnswer = $(this).val();
+  correctAnswer = clouds[currentIndex].species;
+  console.log("You clicked " + userAnswer + ". The correct answer is " + correctAnswer);
 }
