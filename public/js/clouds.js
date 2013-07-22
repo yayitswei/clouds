@@ -39,22 +39,35 @@ $(document).ready(function() {
   }
   $("#cloudthumbs li").click(goToCloud);
 
-  // wire up answer listeners
+  // wire up the radio buttons
   $('body').on('change', 'input[name=genus-group]', null, checkGenusAnswer);
   $('body').on('change', 'input[name=species-group]', null, checkSpeciesAnswer);
 });
 
 function loadCloud(index) {
+  currentIndex = index;
   cloudbg = $('#cloudbg');
   cloudbg.fadeOut('slow', function() {
+    currentCloud = clouds[index];
     cloudbg.css("background-image","url(/images/" + clouds[index].name + ".png)");
     cloudbg.fadeIn('slow');
     $('#cloudname').html(clouds[index].genus + " " + clouds[index].species + " " + clouds[index].optical);
     $('#clouddescription').html(clouds[index].description);
     $('#cloudprecipitation').html(clouds[index].precipitation);
     $('#cloudlevel').html(clouds[index].level);
-    addMultipleChoice($('#genus-choices'), 'genus');
-    addMultipleChoice($('#species-choices'), 'species');
+
+    // multiple choice
+    // clear the old choices
+    $("#genus-choices").html("");
+    $("#species-choices").html("");
+    // only add genus choices if the current cloud has one defined
+    if (! _.isEmpty(currentCloud.genus)) {
+      addMultipleChoice($('#genus-choices'), 'genus');
+    }
+    // only add species choices if the current cloud has one defined
+    if (! _.isEmpty(currentCloud.species)) {
+      addMultipleChoice($('#species-choices'), 'species');
+    }
   });
 
 }
@@ -96,8 +109,8 @@ function addMultipleChoice($element, field) {
   // we know the correct answer from our current cloud, clouds[currentIndex]
   choices = getChoices(_.pluck(clouds, field), clouds[currentIndex][field]);
 
-  // clear the element
-  $element.html($element, "");
+  // Add the instructional text
+  $element.append("<p>Choose the correct " + field + "</p>");
 
   // loop through choices and add the radio buttons (change this to restyle)
   for (i in choices) {
@@ -107,6 +120,7 @@ function addMultipleChoice($element, field) {
   }
 }
 
+// TODO (ceci): change these two functions to display correct/incorrect
 function checkGenusAnswer() {
   userAnswer = $(this).val();
   correctAnswer = clouds[currentIndex].genus;
