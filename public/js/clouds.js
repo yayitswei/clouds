@@ -1,12 +1,22 @@
 var currentIndex = 0;
 var clouds =
 [
-{"name": "calistoga",
-  "genus": "genus1",
-  "specie": "specie1"},
 {"name": "kauai",
-  "genus": "genus2",
-  "specie": "specie2"},
+  "genus": "Altocumulus",
+  "species": "Floccus",
+  "optical": ""},
+{"name": "calistoga",
+  "genus": "Stratus",
+  "species": "Fractus",
+  "optical": ""},
+{"name": "sonoma",
+  "genus": "Stratocumulus",
+  "species": "",
+  "optical": ""},
+{"name": "nihau",
+  "genus": "",
+  "species": "",
+  "optical": "Crepuscular Rays"},
   ];
 
 
@@ -23,7 +33,7 @@ function loadCloud(index) {
   cloudbg.fadeOut('slow', function() {
     cloudbg.css("background-image","url(/images/" + clouds[index].name + ".png)");
     cloudbg.fadeIn('slow');
-    $('#cloudname').html(clouds[index].genus + " " + clouds[index].specie);
+    $('#cloudname').html(clouds[index].genus + " " + clouds[index].species + " " + clouds[index].optical);
   });
 
 }
