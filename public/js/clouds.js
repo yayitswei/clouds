@@ -4,19 +4,31 @@ var clouds =
 {"name": "kauai",
   "genus": "Altocumulus",
   "species": "Floccus",
-  "optical": ""},
+  "optical": "",
+  "description": "Crepuscular rays are sunbeams that appear to burst from clouds. In spite of being almost parallel, the rays appear to radiate from the clouds &#8211; the same optical phenomenon as railroad tracks getting wider when they get nearer.",
+  "precipitation": "None/light",
+  "level": "Mid-level cloud"},
 {"name": "calistoga",
   "genus": "Stratus",
   "species": "Fractus",
-  "optical": ""},
+  "optical": "",
+  "description": "Crepuscular rays are sunbeams that appear to burst from clouds. In spite of being almost parallel, the rays appear to radiate from the clouds &#8211; the same optical phenomenon as railroad tracks getting wider when they get nearer.",
+  "precipitation": "None/light",
+  "level": "Low-level cloud"},
 {"name": "sonoma",
   "genus": "Stratocumulus",
   "species": "",
-  "optical": ""},
+  "optical": "",
+  "description": "Crepuscular rays are sunbeams that appear to burst from clouds. In spite of being almost parallel, the rays appear to radiate from the clouds &#8211; the same optical phenomenon as railroad tracks getting wider when they get nearer.",
+  "precipitation": "None/light",
+  "level": "Low-level cloud"},
 {"name": "nihau",
   "genus": "",
   "species": "",
-  "optical": "Crepuscular Rays"},
+  "optical": "Crepuscular Rays",
+  "description": "Crepuscular rays are sunbeams that appear to burst from clouds. In spite of being almost parallel, the rays appear to radiate from the clouds &#8211; the same optical phenomenon as railroad tracks getting wider when they get nearer.",
+  "precipitation": "None/light",
+  "level": "Low-level cloud"},
   ];
 
 
@@ -34,6 +46,9 @@ function loadCloud(index) {
     cloudbg.css("background-image","url(/images/" + clouds[index].name + ".png)");
     cloudbg.fadeIn('slow');
     $('#cloudname').html(clouds[index].genus + " " + clouds[index].species + " " + clouds[index].optical);
+    $('#clouddescription').html(clouds[index].description);
+    $('#cloudprecipitation').html(clouds[index].precipitation);
+    $('#cloudlevel').html(clouds[index].level);
   });
 
 }
