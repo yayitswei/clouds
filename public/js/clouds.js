@@ -126,10 +126,10 @@ function checkGenusAnswer() {
   correctAnswer = clouds[currentIndex].genus;
   if (userAnswer==correctAnswer) {
     console.log("Correct!");
-    $('#genus-validation').append("<p>Correct!</p>");
+    $('#genus-validation').html("<p>Correct!</p>");
   } else {
     console.log("Incorrect");
-    $('#genus-validation').append("<p>Incorrect</p>");
+    $('#genus-validation').html("<p>Incorrect</p>");
   }
   // add DOM manipulation here depending on correct/incorrect answer
 }
@@ -139,10 +139,10 @@ function checkSpeciesAnswer() {
   correctAnswer = clouds[currentIndex].species;
   if (userAnswer==correctAnswer) {
     console.log("Correct!");
-    $('#species-validation').append("<p>Correct!</p>");
+    $('#species-validation').html("<p>Correct!</p>");
   } else {
     console.log("Incorrect");
-    $('#species-validation').append("<p>Incorrect</p>");
+    $('#species-validation').html("<p>Incorrect</p>");
   }
   // add DOM manipulation here depending on correct/incorrect answer
   
