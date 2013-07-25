@@ -124,13 +124,26 @@ function addMultipleChoice($element, field) {
 function checkGenusAnswer() {
   userAnswer = $(this).val();
   correctAnswer = clouds[currentIndex].genus;
-  console.log("You clicked " + userAnswer + ". The correct answer is " + correctAnswer);
+  if (userAnswer==correctAnswer) {
+    console.log("Correct!");
+    $('#genus-validation').append("<p>Correct!</p>");
+  } else {
+    console.log("Incorrect");
+    $('#genus-validation').append("<p>Incorrect</p>");
+  }
   // add DOM manipulation here depending on correct/incorrect answer
 }
 
 function checkSpeciesAnswer() {
   userAnswer = $(this).val();
   correctAnswer = clouds[currentIndex].species;
-  console.log("You clicked " + userAnswer + ". The correct answer is " + correctAnswer);
-  // add stuff here
+  if (userAnswer==correctAnswer) {
+    console.log("Correct!");
+    $('#species-validation').append("<p>Correct!</p>");
+  } else {
+    console.log("Incorrect");
+    $('#species-validation').append("<p>Incorrect</p>");
+  }
+  // add DOM manipulation here depending on correct/incorrect answer
+  
 }
