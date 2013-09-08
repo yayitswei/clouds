@@ -159,12 +159,12 @@ function checkGenusAnswer() {
       everythingCorrect();
     }
 
-    $('#genus-validation').html("<p>Correct!</p>");
+    //$('#genus-validation').html("<p>Correct!</p>");
   } else {
     console.log("Incorrect");
     genusCorrect = false;
     $(this).next('label').addClass('wrong');
-    $('#genus-validation').html("<p>Incorrect</p>");
+    //$('#genus-validation').html("<p>Incorrect</p>");
   }
   // add DOM manipulation here depending on correct/incorrect answer
 }
@@ -182,13 +182,13 @@ function checkSpeciesAnswer() {
     if (speciesCorrect & genusCorrect) {
       everythingCorrect();
     }
-    $('#species-validation').html("<p>Correct!</p>");
+    //$('#species-validation').html("<p>Correct!</p>");
   } else {
     speciesCorrect = false;
     console.log("Incorrect");
     $(this).next('label').addClass('wrong');
 
-    $('#species-validation').html("<p>Incorrect</p>");
+    //$('#species-validation').html("<p>Incorrect</p>");
   }
   // add DOM manipulation here depending on correct/incorrect answer
   
@@ -202,11 +202,11 @@ function checkOpticalAnswer() {
 
     $('#optical-validation').html("<p>Correct!</p>");
     everythingCorrect();
+
   }
   else {
     $(this).next('label').addClass('wrong');
-
-    $('#optical-validation').html("<p>Incorrect</p>");
+    //$('#optical-validation').html("<p>Incorrect</p>");
   }
 }
 
@@ -218,11 +218,14 @@ function everythingCorrect(){
   //show cloud stats
   //show cloud desc
   //hide cloud questions
-  var delayTime = 1000;
-  $('.cloud-name').delay(delayTime).fadeIn();
-  $('.cloud-stats').delay(delayTime).fadeIn();
-  $('.cloud-desc').delay(delayTime).fadeIn();
-  $('.questions').fadeOut();
+  var delayTimeShort = 1000;
+  var delayTime = 1800;
+  $('.correct-announcement').fadeIn();
+  $('.correct-announcement').delay(delayTimeShort).fadeOut();
+  $('.cloud-name').delay(delayTime + 100).fadeIn();
+  $('.cloud-stats').delay(delayTime + 100).fadeIn();
+  $('.cloud-desc').delay(delayTime + 100).fadeIn();
+  $('.questions').delay(delayTime).fadeOut(100);
 
 }
 

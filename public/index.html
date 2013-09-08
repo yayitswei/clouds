@@ -13,8 +13,8 @@
   </head>
   <body>
 
-	  <div id="cloudbg"></div>
-	  <div id="shade"></div>
+
+	  <!-- <div id="shade"></div> -->
 
     <!-- I am collapsed by default -->
     <nav id="sidebar" class="sidebar">
@@ -26,6 +26,8 @@
     <!-- I am full width by default -->
 
 	<div class="page-wrap">	
+	  <div id="cloudbg"></div>
+
 	  <a id="previous" onclick="goPrevious()">&#8612;</a>
       <a id="next" onclick="goNext()">&#8614;</a>
 	  
@@ -49,18 +51,22 @@
 		<div class="large-2 columns cloud-stats" style="text-align:center">
 			<p class="description-icon">&#9810;</p>
 			<p id="cloudlevel"></p>
+		</div>
+		<div class="cloud-stats large-12 columns">
 	  		<div class="line"></div>
-
 		</div>
 		<div class="large-6 columns">
 		</div>
 	  </div>
 	  <div class="row questions">
 	  	<h2>Name this cloud:</h2>
-      	<div id="genus-choices"></div><div id="genus-validation"></div>
-      	<div id="species-choices"></div><div id="species-validation"></div>
-      	<div id="optical-choices"></div><div id="optical-validation"></div>
-
+      	<div id="genus-choices"></div>
+      	<div id="species-choices"></div>
+      	<div id="optical-choices"></div>
+      	<div id="everything-correct"></div><div id="everything-correct-validation"></div>
+	  </div>
+	  <div class="correct-announcement">
+	  	<h2>Correct!</h2>
 	  </div>
 	  <div class="row cloud-desc" style="padding-top: 20px;">
 		  <div id ="clouddescription" class="description large-8 large-offset-2 columns"></div>

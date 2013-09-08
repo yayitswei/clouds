@@ -20,7 +20,6 @@ body {
   -o-background-size: cover;
   background-size: cover;
   background-attachment: fixed;
-  // display: none;
 }
 
 .sidebar {
@@ -62,17 +61,33 @@ body {
 
 .labelbox{
   display: inline;
-  cursor: pointer;;
+  cursor: pointer;
+  border: 2px solid white;
+  padding: 11px;
+  margin: 0px 1px;
+  font-family: Karla;
+  font-size: 22px;
 }
 .answer-inputs{
   display: inline;
 }
 
 .wrong{
-  color: red !important;
+  opacity: 0.6;
 }
+.wrong:after{
+  content:url('/images/icon-wrong.png');
+  margin-left: 15px;
+}
+
 .correct{
-  color: green !important;
+}
+
+.correct:after{
+  content:url('/images/icon-correct.png');
+    margin-left: 15px;
+
+
 }
 
 .radio-hidden:checked + .labelbox{
@@ -188,11 +203,13 @@ li {
 	background: #FFF;
 }
 
-.cloud-desc, .cloud-icon, .cloud-name, .cloud-stats{
+.cloud-desc, .cloud-icon, .cloud-name, .cloud-stats, .correct-announcement{
   display: none;
 }
 
-
+.correct-announcement {
+  text-align: center;
+}
 
 .page-wrap{
   position: relative;
@@ -220,21 +237,24 @@ li {
   color: white;
 }
 
-//overlay logic
+
+
 #cloudbg{
-  z-index: 3;
+  // z-index: 3;
 }
 
 #shade{
   z-index: 4;
-  background: rgba(0,0,0,.2);
+  background: rgba(0,0,0,.5);
   position: fixed;
   width: 100%;
   height: 100%;
 }
 
 .page-wrap{
-  z-index: 5;
+  
+    z-index: 5;
+
 }
 
 #sidebar{
