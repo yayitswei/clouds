@@ -19,6 +19,8 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: fixed;
+  // display: none;
 }
 
 .sidebar {
@@ -54,6 +56,29 @@ body {
   line-height: 30px;
 }
 
+.radio-hidden{
+  display: none;
+}
+
+.labelbox{
+  display: inline;
+  cursor: pointer;;
+}
+.answer-inputs{
+  display: inline;
+}
+
+.wrong{
+  color: red !important;
+}
+.correct{
+  color: green !important;
+}
+
+.radio-hidden:checked + .labelbox{
+  // color:blue !important;
+}
+
 
 img.navcloud {
   /*width: 100%;*/
@@ -84,7 +109,7 @@ p {
 
 .description {
   font-family: 'Karla', sans-serif;
-  font-weight: regular;
+  font-weight: normal;
   font-size: 18px;
   line-height: 21px;
   color: #FFF;
@@ -104,6 +129,26 @@ h1 {
   color: #FFF;
   letter-spacing: -3px;
 }
+
+h2 {
+  font-family: 'Karla', sans-serif;
+  font-weight: normal;
+  font-size: 70px;
+  line-height: 70px;
+  color: #FFF;
+  letter-spacing: -3px;
+}
+
+h3 {
+  font-family: 'Karla', sans-serif;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 40px;
+  color: #FFF;
+  letter-spacing: -1px;
+  text-transform: capitalize;
+}
+
 
 h4 {
   font-family: 'Karla', sans-serif;
@@ -143,14 +188,30 @@ li {
 	background: #FFF;
 }
 
+.cloud-desc, .cloud-icon, .cloud-name, .cloud-stats{
+  display: none;
+}
+
+
+
+.page-wrap{
+  position: relative;
+  height: 100%;
+}
+
+#previous, #next{
+  position: absolute;
+  top:45%;
+}
 
 #previous {
-  float:left;
+  // float:left;
+  left: 2%;
   font-size: 70px;
 }
 
 #next {
-  float:right;
+  right: 2%;
   font-size: 70px;
 }
 
@@ -158,3 +219,25 @@ li {
   text-align: center;
   color: white;
 }
+
+//overlay logic
+#cloudbg{
+  z-index: 3;
+}
+
+#shade{
+  z-index: 4;
+  background: rgba(0,0,0,.2);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.page-wrap{
+  z-index: 5;
+}
+
+#sidebar{
+  z-index:7; 
+}
+

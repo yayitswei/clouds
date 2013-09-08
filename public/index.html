@@ -13,6 +13,9 @@
   </head>
   <body>
 
+	  <div id="cloudbg"></div>
+	  <div id="shade"></div>
+
     <!-- I am collapsed by default -->
     <nav id="sidebar" class="sidebar">
 	    <a href="#" class="close-sidebar">&#10005;</a>
@@ -23,7 +26,9 @@
     <!-- I am full width by default -->
 
 	<div class="page-wrap">	
-	  <div id="cloudbg"></div>
+	  <a id="previous" onclick="goPrevious()">&#8612;</a>
+      <a id="next" onclick="goNext()">&#8614;</a>
+	  
 	  <div class="row">
 		<div class="large-1 columns main-navigation">
 			<a href="#sidebar" class="nav-title">&#9776;</a>
@@ -32,39 +37,35 @@
 			<a href="#" class="nav-title">About</a>
 		</div>
 	  </div>
-	  <div class="row">
+	  <div class="row cloud-name">
 		  <h1 id="cloudname" style="text-align:center; padding-top:50px;"></h1>
 		  <div class="line"></div>
 	  </div>
-	  <div class="row" style="padding-bottom: 10px;">
+	  <div class="row cloud-stats" style="padding-bottom: 10px;">
 		<div class="large-2 large-offset-4 columns" style="text-align:center">
 			<p class="description-icon">&#9748;</p>
 			<p id="cloudprecipitation"></p>
 		</div>
-		<div class="large-2 columns" style="text-align:center">
+		<div class="large-2 columns cloud-stats" style="text-align:center">
 			<p class="description-icon">&#9810;</p>
 			<p id="cloudlevel"></p>
+	  		<div class="line"></div>
+
 		</div>
 		<div class="large-6 columns">
 		</div>
 	  </div>
-	  <div class="line"></div>
 	  <div class="row questions">
+	  	<h2>Name this cloud:</h2>
       	<div id="genus-choices"></div><div id="genus-validation"></div>
       	<div id="species-choices"></div><div id="species-validation"></div>
+      	<div id="optical-choices"></div><div id="optical-validation"></div>
+
 	  </div>
-	  <div class="row" style="padding-top: 20px;">
+	  <div class="row cloud-desc" style="padding-top: 20px;">
 		  <div id ="clouddescription" class="description large-8 large-offset-2 columns"></div>
 	  </div>
-	  <div class="row">
-		<div class="large-1 column prev-next">
-		  <a id="previous" onclick="goPrevious()">&#8612;</a>
-		</div>
-		<div class="large-1 large-offset-10 columns prev-next">
-	      <a id="next" onclick="goNext()">&#8614;</a>
-	 	</div>
-	  </div>
+
 	</div>
-	
   </body>
 </html>
