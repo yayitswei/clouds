@@ -20,7 +20,7 @@ var clouds =
   "species": "",
   "optical": "",
   "description": "Crepuscular rays are sunbeams that appear to burst from clouds. In spite of being almost parallel, the rays appear to radiate from the clouds &#8211; the same optical phenomenon as railroad tracks getting wider when they get nearer.",
-  "precipitation": "None/light",
+  "precipitation": "Heavy",
   "level": "Low-level cloud"},
 {"name": "nihau",
   "genus": "",
@@ -31,8 +31,10 @@ var clouds =
   "level": "Low-level cloud"},
   ];
 
+  var skycons = new Skycons({"color": "white"});
 
 $(document).ready(function() {
+
   loadCloud(currentIndex);
   for (i in clouds) {
     $('#cloudthumbs').append("<li data-index=" + i + "><img class='navcloud' src='/images/"+ clouds[i].name + "-thumb.png'></li>");
@@ -49,6 +51,25 @@ $(document).ready(function() {
   // $('body').on('change', '.optical-radio', null, checkOpticalAnswer);
 });
 
+function addAnimation(elem, description){
+  var picType = "";
+  var skyconType;
+  if (description =='None/light'){
+    picType = "1";
+    skyconType = Skycons.PARTLY_CLOUDY_DAY;
+  }
+  if (description == "Heavy"){
+    picType = "2";   
+    skyconType = Skycons.RAIN;
+  }
+
+
+  elem.append($('<canvas id="'+picType+'" class="skyconCanvas" width="128" height="128"></canvas>'));
+  skycons.add(picType, skyconType);
+  skycons.play();
+}
+
+
 function loadCloud(index) {
   currentIndex = index;
   cloudbg = $('#cloudbg');
@@ -60,7 +81,14 @@ function loadCloud(index) {
     cloudbg.fadeIn('slow');
     $('#cloudname').html(clouds[index].genus + " " + clouds[index].species + " " + clouds[index].optical);
     $('#clouddescription').html(clouds[index].description);
-    $('#cloudprecipitation').html(clouds[index].precipitation);
+    
+    $('.skyconCanvas').remove();
+    // $('#cloudprecipitation').html(clouds[index].precipitation);
+    addAnimation($('#cloudprecipitation'),clouds[index].precipitation);
+    // addAnimation($('#cloudlevel'),clouds[index].level);
+
+
+    
     $('#cloudlevel').html(clouds[index].level);
 
 
@@ -128,7 +156,11 @@ function addMultipleChoice($element, field) {
   choices = getChoices(_.pluck(clouds, field), clouds[currentIndex][field]);
 
   // Add the instructional text
-  $element.append("<h3>" + field + "</h3>");
+  if (field == "optical") {
+      $element.append("<h3>Optical phenomenon</h3>");
+  } else {
+      $element.append("<h3>" + field + "</h3>");
+  }
 
   // loop through choices and add the radio buttons (change this to restyle)
   for (i in choices) {
@@ -162,7 +194,7 @@ function checkGenusAnswer() {
     //$('#genus-validation').html("<p>Correct!</p>");
   } else {
     console.log("Incorrect");
-    genusCorrect = false;
+    // genusCorrect = false;
     $(this).next('label').addClass('wrong');
     //$('#genus-validation').html("<p>Incorrect</p>");
   }
@@ -184,7 +216,7 @@ function checkSpeciesAnswer() {
     }
     //$('#species-validation').html("<p>Correct!</p>");
   } else {
-    speciesCorrect = false;
+    // speciesCorrect = false;
     console.log("Incorrect");
     $(this).next('label').addClass('wrong');
 
@@ -222,6 +254,18 @@ function everythingCorrect(){
   var delayTime = 1800;
   $('.correct-announcement').fadeIn();
   $('.correct-announcement').delay(delayTimeShort).fadeOut();
+  
+  // $('#previous, #next').hide();
+  // $('#previous').attr('onClick', 'goPrevious()')
+  // $('#next').attr('onClick','').delay(delayTime+100,function(){$(this).attr('onClick', 'goNext()')});
+  $('#next').attr('onClick','');
+  $('#previous').attr('onClick','');
+  window.setTimeout(function(){
+    $('#previous').attr('onClick', 'goPrevious()')
+  }, delayTime + 100);
+  window.setTimeout(function(){
+      $('#next').attr('onClick', 'goNext()')
+  }, delayTime + 100);
   $('.cloud-name').delay(delayTime + 100).fadeIn();
   $('.cloud-stats').delay(delayTime + 100).fadeIn();
   $('.cloud-desc').delay(delayTime + 100).fadeIn();
@@ -244,6 +288,20 @@ function hideEverything(){
  
 }
 
+//adding skycons
 
+// you can add a canvas by its ID...
+// skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+
+// start animation!
+// skycons.play();
+
+// you can also halt animation with skycons.pause()
+
+// want to change the icon? no problem:
+//skycons.set("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
+
+// want to remove one altogether? no problem:
+//skycons.remove("icon2");
 
 
